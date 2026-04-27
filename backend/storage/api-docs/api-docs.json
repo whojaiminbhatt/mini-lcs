@@ -1,0 +1,175 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Loan Collection System API",
+        "description": "Mini Loan Collection Management System REST APIs",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/auth/register": {
+            "post": {
+                "description": "Register a new user",
+                "operationId": "d764dd091cc4494ae0baf360b03319f3",
+                "responses": {
+                    "201": {
+                        "description": "User registered successfully"
+                    }
+                }
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "description": "Login a user",
+                "operationId": "8dcb70df1020986038d098cc08d05dae",
+                "responses": {
+                    "200": {
+                        "description": "Logged in successfully"
+                    },
+                    "401": {
+                        "description": "Invalid credentials"
+                    }
+                }
+            }
+        },
+        "/api/auth/logout": {
+            "post": {
+                "description": "Logout the authenticated user",
+                "operationId": "69281b12abb272c76871f19cb17ca563",
+                "responses": {
+                    "200": {
+                        "description": "Logged out successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/me": {
+            "get": {
+                "description": "Get authenticated user details",
+                "operationId": "b9abb1a7a74670a19c215c2c133f14d8",
+                "responses": {
+                    "200": {
+                        "description": "User retrieved successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/collections": {
+            "post": {
+                "description": "Add a new collection",
+                "operationId": "f4aa290b8c5210d66436d26b31084018",
+                "responses": {
+                    "201": {
+                        "description": "Collection added successfully"
+                    },
+                    "422": {
+                        "description": "Validation error (e.g. amount exceeds pending)"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/dashboard": {
+            "get": {
+                "description": "Get dashboard metrics",
+                "operationId": "d65dd4578b062e47e81af80ed79d2e0c",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/api/dashboard/best-time": {
+            "get": {
+                "description": "Get best collection time prediction",
+                "operationId": "a8ca293b47e8cd3108dafc0efbaaf7c1",
+                "responses": {
+                    "200": {
+                        "description": "Best collection time retrieved successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/loans": {
+            "get": {
+                "description": "List all loans",
+                "operationId": "53fdef403307586122900dc3b1d07368",
+                "responses": {
+                    "200": {
+                        "description": "Loans retrieved successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "post": {
+                "description": "Create or update a loan",
+                "operationId": "92bd5c653a9a8345b4f161d5ba3bbd71",
+                "responses": {
+                    "201": {
+                        "description": "Loan created successfully"
+                    },
+                    "200": {
+                        "description": "Loan updated successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/loans/{id}": {
+            "get": {
+                "description": "Get loan details",
+                "operationId": "357235ea3e97150863cac011d494fbb4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Loan retrieved successfully"
+                    },
+                    "404": {
+                        "description": "Loan not found"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        }
+    }
+}
